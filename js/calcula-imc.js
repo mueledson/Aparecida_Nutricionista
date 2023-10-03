@@ -23,19 +23,22 @@ for (var i = 0; i < pacientes.length; i++) {
         tdImc.textContent = "Peso Inválido"
         paciente.classList.add("erro")
         pesoEhValido = false
-    } else if (altura <= 0 || altura >= 3.00) {
+    }
+
+    else if (altura <= 0 || altura >= 3.00) {
         tdImc.textContent = "Altura Inválida"
         paciente.classList.add("erro")
         alturaEhValida = false
-    } else {
-        var imc = peso / (altura * altura)
-        tdImc.textContent = imc.toFixed(2)
+    }else {
+        var imc = calculaImc(peso, altura)
+        tdImc.textContent = imc
     }
 }
 
-//
-var btnAdicionar = document.querySelector("#adicionar-paciente")
+function calculaImc(peso, altura) {
+    var imc = 0
 
-btnAdicionar.addEventListener("click", () => {
-    
-})
+    imc = peso / (altura * altura)
+
+    return imc.toFixed(2)
+}
